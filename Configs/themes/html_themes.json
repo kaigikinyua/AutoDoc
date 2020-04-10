@@ -1,0 +1,34 @@
+{
+    "dark":[
+        {"accent":"accent"},
+        {"background":"accent_dark"},
+        {"bright":"bright_text"},
+        {"warning":"red"},
+        {"success":"lightgreen"}
+    ],
+    "default":[
+        {"accent":"lightblue"},
+        {"background":"lightgray"},
+        {"foreground":"white"},
+        {"title":[{"font-family":"Arial"},{"font-size":"20px"}]},
+        {"text":[{"font-family":"San-serif"},{"font-size":"16px"}]}
+    ],
+    "modern_layout":[
+        {"sidenav":true},
+        {"landing":true},
+        {"slider":false},
+        {"contacts":true}
+    ],
+    "simple_layout":[
+        {"sidenav":false},
+        {"landing":false},
+        {"slider":false},
+        {"contacts":false}
+    ],
+    "extreme_layout":[
+        {"sidenav":true},
+        {"landing":true},
+        {"slider":true},
+        {"contacts":true}
+    ]
+}
