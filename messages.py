@@ -7,7 +7,11 @@ class Messages:
     @staticmethod 
     def success(message):
         OKGREEN='\033[92m'
-        print(f"{OKGREEN}Success: {message}") 
+        print(f"{OKGREEN}Success: {message}")
+
+    @staticmethod
+    def message(message):
+        print(f"{message}") 
 
 class Log:
     #log messages to an error file

@@ -1,7 +1,3 @@
-class HtmlPage:
-    def gen_html_page(self,file_link):
-        pass 
-
 class Configs:
     links=""
     title=""
