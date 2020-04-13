@@ -1,0 +1,27 @@
+$background:lightgray;
+$foreground:skyblue;
+$bright:white;
+
+
+//text
+.title{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 22px;
+    margin:10px 0px;
+    color:$bright;
+}
+.subtitle{
+    font-family: monospace;
+    font-size: 18px;
+    margin:8px 0px;
+    color:darken($bright,10%);
+}
+.text{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    margin-left: 20px;
+    color: $bright;
+}
+
+
+//containers

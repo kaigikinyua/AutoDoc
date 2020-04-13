@@ -1,15 +1,15 @@
 {
     "dark":[
-        {"accent":"accent"},
-        {"background":"accent_dark"},
-        {"bright":"bright_text"},
+        {"accent":"#7CFC00"},
+        {"background":"black"},
+        {"bright":"white"},
         {"warning":"red"},
         {"success":"lightgreen"}
     ],
     "default":[
         {"accent":"lightblue"},
         {"background":"lightgray"},
-        {"foreground":"white"},
+        {"bright":"white"},
         {"title":[{"font-family":"Arial"},{"font-size":"20px"}]},
         {"text":[{"font-family":"San-serif"},{"font-size":"16px"}]}
     ],
