@@ -1,13 +1,16 @@
 import os
 
 class Documentation:
-
     new_documentation=True
     doc_type=""
-    doc_root_dir=""
+    code_root_dir=""
+    target_root_dir=""
 
     def __init__(self,*args, **kwargs):
-        pass
+        doc_type=kwargs['doc_type']
+        code_root_dir=kwargs['code_root_dir']
+        target_root_dir=kwargs['target_root_dir']
+        print(kwargs)
     
     def check_existing_doc(self):
         pass 
@@ -34,8 +37,6 @@ class Comments:
 
     def code_blue_print(self,fileComments):
         pass
-    
-class CodeDoc:
 
     def read_code_file(self,path):
         pass
@@ -48,3 +49,5 @@ class CodeDoc:
 
     def group_paragraph(self):
         pass 
+
+#D=Documentation(doc_type="Full",code_root_dir="/home/antony",target_root_dir="./home")
