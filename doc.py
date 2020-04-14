@@ -4,6 +4,7 @@ class Documentation:
 
     new_documentation=True
     doc_type=""
+    doc_root_dir=""
 
     def __init__(self,*args, **kwargs):
         pass
@@ -19,24 +20,6 @@ class Documentation:
 
     def documentation_version(self):
         pass
-
-class HtmlDoc:
-    index_page=""
-    def __init__(self):
-        pass
-
-    def gen_html_page(self,page_title):
-        pass 
-
-    def navigation_links(self):
-        pass
-
-    def contacts(self):
-        pass
-
-    def navigation_bar(self):
-        pass
-
 
 class Comments:
 
