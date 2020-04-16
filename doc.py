@@ -1,5 +1,5 @@
 import os
-
+import docx
 class Documentation:
     new_documentation=True
     doc_type=""
@@ -10,7 +10,6 @@ class Documentation:
         doc_type=kwargs['doc_type']
         code_root_dir=kwargs['code_root_dir']
         target_root_dir=kwargs['target_root_dir']
-        print(kwargs)
     
     def check_existing_doc(self):
         pass 
@@ -50,4 +49,4 @@ class Comments:
     def group_paragraph(self):
         pass 
 
-#D=Documentation(doc_type="Full",code_root_dir="/home/antony",target_root_dir="./home")
+D=Documentation(doc_type="Full",code_root_dir="/home/antony",target_root_dir="./home")
