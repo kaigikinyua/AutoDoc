@@ -1,0 +1,24 @@
+{
+    "languages":[
+        {
+            "language":"Python",
+            "delimeters":[
+                {"start":"#","end":"/n"},
+                {"start":"'''","end":"/n"}
+            ]
+        },
+        {
+            "language":"others",
+            "delimeters":[
+                {"start":"//","end":"/n"},
+                {"start":"/*","end":"*/"}
+            ]
+        },
+        {
+            "launguage":"html",
+            "delimeters":[
+                {"start":"<!--","end":"-->"}
+            ]
+        }
+    ]
+}

@@ -37,30 +37,6 @@ class Documentation:
     def documentation_version(self):
         pass
 
-class Comments:
 
-    def filter_comments(self,filepath,delimeter):
-        pass
-
-    def filter_text(self,filepath):
-        pass
-
-    def comment_text(self,comments):
-        pass 
-
-    def code_blue_print(self,fileComments):
-        pass
-
-    def read_code_file(self,path):
-        pass
-
-    def filter_comments(self,filedata):
-        pass 
-
-    def code_segment(self):
-        pass 
-
-    def group_paragraph(self):
-        pass 
 
 D=Documentation(doc_type="Full",code_root_dir="/home/antony/Pit/Projects/desktop/autoDoc",target_root_dir="/home/antony/Desktop",filename="docone.docx")
