@@ -79,3 +79,17 @@ class Files:
             Messages.error("Could not delete file "+str(file_path))
             return False
     #endsub
+
+    @staticmethod
+    def load_json(file_path):
+        if(Files.file_exists(file_path)):
+            try:
+                with open(file_path,"r") as data:
+                    mydata=json.load(data)
+                    return mydata
+            except:
+                Messages.error("Could not load JSON data")
+                return False
+        else:
+            Messages.error("File "+file_path+" does not exist")
+            return False
