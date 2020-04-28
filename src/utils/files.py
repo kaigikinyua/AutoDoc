@@ -1,23 +1,48 @@
 import os
-
-from messages import Messages
+from .messages import Message
 #t:CRUD file operations
 #p:Create,Read,Update/Append,Delete
 class Files:
+    def __init__(self):
+        pass
+    @staticmethod
+    def listTargetDir(targetDir):
+        if(Files.dir_exists(targetDir)):
+            dirList=os.listdir(targetDir)
+            fileList=[]
+            for item in dirList:
+                if(os.path.isfile(targetDir+"/"+item)):
+                    fileList.append(targetDir+"/"+item)
+                elif(os.path.isdir(targetDir+"/"+item)):
+                    newFileList=Files.listTargetDir(targetDir+"/"+item)
+                    for item in newFileList:
+                        fileList.append(item)
+                else:
+                    pass
+            return fileList
+        else:
+            return False
+
     @staticmethod
     def dir_exists(dir_path):
         if(os.path.isdir(dir_path)):
             return True
         else:
-            Messages.error("Directory "+str(dir_path)+" does not exist")
+            Message.error("Directory "+dir_path+" already exists")
             return False
 
     @staticmethod
     def create_dir(dir_path):
         if(Files.dir_exists(dir_path)):
-            Messages.error("Directory already exists")
+            Message.error("Directory "+dir_path+" already exists")
+            return False
         else:
-            Messages.error("Created dir method in Files has to be updated")
+            if(os.mkdir(dir_path)):
+                Message.success("Directory "+dir_path+" created")
+                return dir_path
+            else:
+                Message.error("Could not create directory "+dir_path)
+                return False
 
     @staticmethod
     def file_exists(file_path,error):
@@ -25,7 +50,7 @@ class Files:
             return True
         else:
             if(error==True):
-                Messages.error("File "+str(file_path)+" does not exist")
+                Message.error("File "+str(file_path)+" does not exist")
             return False
 
     @staticmethod
@@ -36,7 +61,7 @@ class Files:
             f.close()
             return data
         else:
-            Messages.error("Could not read file "+str(file_path))
+            Message.error("Could not read file "+str(file_path))
             return False
 
     @staticmethod
@@ -47,7 +72,7 @@ class Files:
             f.close()
             return True
         except:
-            Messages.error("Could not write to file "+str(file_path))
+            Message.error("Could not write to file "+str(file_path))
             return False 
 
     @staticmethod
@@ -60,7 +85,7 @@ class Files:
             else:
                 return False
         else:
-            Messages.error("Could not append to file "+str(file_path))
+            Message.error("Could not append to file "+str(file_path))
             return False
 
     @staticmethod
@@ -70,10 +95,10 @@ class Files:
                 os.remove(file_path)
                 return True
             except:
-                Messages.error("Could not delete file "+str(file_path))
+                Message.error("Could not delete file "+str(file_path))
                 return False
         else:
-            Messages.error("Could not delete file "+str(file_path))
+            Message.error("Could not delete file "+str(file_path))
             return False
 
     @staticmethod
@@ -84,8 +109,8 @@ class Files:
                     mydata=json.load(data)
                     return mydata
             except:
-                Messages.error("Could not load JSON data")
+                Message.error("Could not load JSON data")
                 return False
         else:
-            Messages.error("File "+file_path+" does not exist")
+            Message.error("File "+file_path+" does not exist")
             return False

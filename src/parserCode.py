@@ -1,5 +1,23 @@
+from utils.messages import Message
+from utils.files import Files
 
 class CodeParser:
+    targetDir=""
+    fileList=[]
+    docDir=""
+
+    def __init__(self,targetDir):
+        self.targetDir=targetDir
+        self.fileList=Files.listTargetDir(targetDir)
+        self.docDir=Files.create_dir(targetDir+"/autoDoc")
+            
+    def parseStart(self):
+        for item in self.fileList:
+            print("Reading file"+str(item))
+            data=Files.read_file(item)
+            if(data!=False):
+                pass
+
     def filter_comments(self,filepath,delimeter):
         pass
 
@@ -34,3 +52,6 @@ class Code:
     def formatCode():
         pass
 
+
+c=CodeParser("./test")
+c.parseStart()
