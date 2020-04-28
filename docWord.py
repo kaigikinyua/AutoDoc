@@ -39,4 +39,22 @@ class Documentation:
 
 
 
+
+
+#Creating word documents
+class WordDoc:
+    file_path=""
+    def __init__(*args, **kwargs):
+        pass 
+
+    def new_paragraph(self,data):
+        pass
+
+    def title(self,text):
+        pass
+     
+    def new_page(self):
+        pass
+
+
 D=Documentation(doc_type="Full",code_root_dir="/home/antony/Pit/Projects/desktop/autoDoc",target_root_dir="/home/antony/Desktop",filename="docone.docx")

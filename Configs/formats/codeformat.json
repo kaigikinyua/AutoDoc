@@ -20,5 +20,21 @@
                 {"start":"<!--","end":"-->"}
             ]
         }
+    ],
+    "comments":[
+        {
+            "format":"title",
+            "delimeters":[
+                {"start":"t:","end":" "},
+                {"start":"t:","end":"/n"}
+            ]
+        },
+        {
+            "format":"paragraph",
+            "delimeters":[
+                {"start":"p:","end":" "},
+                {"start":"p:","end":"/n"}
+            ]
+        }
     ]
 }

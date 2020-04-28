@@ -1,5 +1,5 @@
-class Code:
 
+class CodeParser:
     def filter_comments(self,filepath,delimeter):
         pass
 
