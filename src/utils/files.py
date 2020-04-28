@@ -28,7 +28,7 @@ class Files:
         if(os.path.isdir(dir_path)):
             return True
         else:
-            Message.error("Directory "+dir_path+" already exists")
+            Message.error("Directory "+dir_path+" does not exists")
             return False
 
     @staticmethod
@@ -37,12 +37,14 @@ class Files:
             Message.error("Directory "+dir_path+" already exists")
             return False
         else:
-            if(os.mkdir(dir_path)):
+            try:
+                os.mkdir(dir_path)
                 Message.success("Directory "+dir_path+" created")
                 return dir_path
-            else:
+            except:
                 Message.error("Could not create directory "+dir_path)
                 return False
+
 
     @staticmethod
     def file_exists(file_path,error):

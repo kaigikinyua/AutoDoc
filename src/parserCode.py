@@ -5,12 +5,26 @@ class CodeParser:
     targetDir=""
     fileList=[]
     docDir=""
-
+    error=False
     def __init__(self,targetDir):
         self.targetDir=targetDir
         self.fileList=Files.listTargetDir(targetDir)
         self.docDir=Files.create_dir(targetDir+"/autoDoc")
-            
+        if(self.docDir==False):
+            self.error=True
+    
+    #decorators
+    def check_error(original_function):
+        def wrapper_function(self):
+            if(self.error==True):
+                Message.error("Could not continue with execution")
+                return False
+            else:
+                return original_function(self)
+        return wrapper_function
+    #dec end
+
+    @check_error
     def parseStart(self):
         for item in self.fileList:
             print("Reading file"+str(item))
@@ -38,6 +52,9 @@ class CodeParser:
     
     def adjuscentDocs(self,targetDir):
         pass
+
+
+
     
 class Code:
     def get_text_in_between(start,end):
