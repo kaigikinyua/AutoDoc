@@ -24,25 +24,32 @@ class CodeParser:
         return wrapper_function
     #dec end
 
-    @check_error
     def parseStart(self):
         for item in self.fileList:
-            print("Reading file"+str(item))
+            Message.success("Reading file "+item+".....")
             data=Files.read_file(item)
             if(data!=False):
-                pass
+                comments=self.filter_comments(data)
+            else:
+                print(data)
 
-    def filter_comments(self,filepath,delimeter):
-        pass
+    def filter_comments(self,filedata):
+        languages=Files.load_json("./Configs/formats/languages.json")
+        comments_delimeters=languages["languages"][0]["delimeters"]
+        comments=[]
+        for delimeter in comments_delimeters:
+            print(delimeter["start"])
+            for line in filedata:
+                for char in line:
+                    if(char==delimeter["start"]):
+                        print(line)
+                    
 
     def filter_text(self,filepath):
         pass
 
     def code_blue_print(self,fileComments):
         pass
-
-    def filter_comments(self,filedata):
-        pass 
 
     def code_segment(self):
         pass 

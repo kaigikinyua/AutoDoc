@@ -1,4 +1,5 @@
 import os
+import json
 from .messages import Message
 #t:CRUD file operations
 #p:Create,Read,Update/Append,Delete
@@ -105,14 +106,12 @@ class Files:
 
     @staticmethod
     def load_json(file_path):
-        if(Files.file_exists(file_path)):
-            try:
-                with open(file_path,"r") as data:
-                    mydata=json.load(data)
-                    return mydata
-            except:
-                Message.error("Could not load JSON data")
-                return False
+        if(Files.file_exists(file_path,True)):
+            with open(file_path,"r") as data:
+                mydata=json.load(data)
+                return mydata
+            Message.error("Could not load JSON data")
+            return False
         else:
             Message.error("File "+file_path+" does not exist")
             return False
