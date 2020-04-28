@@ -1,15 +1,20 @@
 {
-    "version":"1.0",
-    "features":[
-        {"feature":"Create word documents from source code and *.ad files"},
-        {"feature":"Create readme.md files from source and *.ad files"},
-        {"features":"Create simple site like documentation from code"}
-    ]
-}
-{
-    "version":"1.1",
-    "features":[
-        {"feature":"all features of 1.0"},
-        {"feture":"read multiple line comments"}
-    ]
+    "versions":[
+        {
+            "version":"1.0",
+            "features":[
+                    {"feature":"Create word documents from source code and *.txt files"},
+                    {"feature":"Create readme.md files from source and *.txt files"},
+                    {"features":"Create simple site like documentation from code"},
+                    {"feature":"Use auto_Filename.txt format"}
+                ]
+        },
+        {
+            "version":"1.1",
+            "features":[
+                {"feature":"all features of 1.0"},
+                {"feture":"read multiple line comments"}
+            ]
+        }
+    ]   
 }

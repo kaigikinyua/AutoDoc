@@ -1,25 +1,31 @@
 {
     "formats":[
         {
-            "class":[
+            "format":"class",
+            "delimeters":[
+                {"start":"class","end":":"},
+                {"start":"class","end":"\n"}
+            ],
+            "extras":[
                 {
+                    "extra":"inheritance",
                     "delimeters":[
-                        {"start":"class","end":":"},
-                        {"start":"class","end":"\n"}
-                    ],
-                    "inheritance":[
-                        {"parentDelimeters":[{"start":"(","end":")"}]}
+                        {"start":"(","end":")"}
                     ]
                 }
+                
+            ]
+        },
+        {
+            "format":"function",
+            "delimeters":[
+                {"start":"def","end":":"},
+                {"start":"def","end":"/n"}
             ],
-
-            "function":[
+            "extras":[
                 {
+                    "extra":"arguments",
                     "delimeters":[
-                        {"start":"def","end":":"},
-                        {"start":"def","end":"/n"}
-                    ],
-                    "arguments":[
                         {"start":"(","end":")"}
                     ]
                 }

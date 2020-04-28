@@ -46,7 +46,8 @@ class CodeParser:
                     if(char==delimeter["start"] and line[len(line)-1]!=delimeter["end"]):
                         comment=Code.get_text_in_between(delimeter["start"],delimeter["end"],line)
                         comments.append(comment)
-                    else:
+                
+                
         return comments
 
     def formated_comments(self,comments):
