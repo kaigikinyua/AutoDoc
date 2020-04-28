@@ -16,8 +16,6 @@ class Messages:
         print(f"{message}") 
 
 class Log:
-    #log messages to an error file
-    #get project name, curr_time, and error message
     @staticmethod
     def log_error(message):
         log_message="[error]"+str(message)
@@ -33,7 +31,7 @@ class Log:
             Messages.success("Log added")
         else:
             Messages.error("Could not add to logs")
-    #current time, documentation verion and type of documentation and state
+
     @staticmethod
     def log_doc_versioning(doc_type):
         pass 

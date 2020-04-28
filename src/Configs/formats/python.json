@@ -1,0 +1,29 @@
+{
+    "formats":[
+        {
+            "class":[
+                {
+                    "delimeters":[
+                        {"start":"class","end":":"},
+                        {"start":"class","end":"\n"}
+                    ],
+                    "inheritance":[
+                        {"parentDelimeters":[{"start":"(","end":")"}]}
+                    ]
+                }
+            ],
+
+            "function":[
+                {
+                    "delimeters":[
+                        {"start":"def","end":":"},
+                        {"start":"def","end":"/n"}
+                    ],
+                    "arguments":[
+                        {"start":"(","end":")"}
+                    ]
+                }
+            ]
+        }
+    ]
+}

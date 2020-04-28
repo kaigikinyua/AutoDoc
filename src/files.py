@@ -1,9 +1,9 @@
 import os
 
 from messages import Messages
-#CRUD file operations
+#t:CRUD file operations
+#p:Create,Read,Update/Append,Delete
 class Files:
-    #sub: Directory methods
     @staticmethod
     def dir_exists(dir_path):
         if(os.path.isdir(dir_path)):
@@ -19,9 +19,6 @@ class Files:
         else:
             Messages.error("Created dir method in Files has to be updated")
 
-    #endsub
-    #sub: File methods
-    #func:file_path-> Path to file, error->{Boolean Values: if true display error if any else hide error}
     @staticmethod
     def file_exists(file_path,error):
         if(os.path.isfile(file_path)):
@@ -78,7 +75,6 @@ class Files:
         else:
             Messages.error("Could not delete file "+str(file_path))
             return False
-    #endsub
 
     @staticmethod
     def load_json(file_path):

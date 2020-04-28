@@ -1,0 +1,22 @@
+{
+    "formats":[
+        {
+            "format":"title",
+            "delimeters":[
+                {"start":"t:","end":"/n"}
+            ]
+        },
+        {
+            "format":"subtitle",
+            "delimeters":[
+                {"start":"st:","end":"/n"}
+            ]
+        },
+        {
+            "format":"paragraph",
+            "delimeters":[
+                {"start":"p:","end":"/n"}
+            ]
+        }
+    ]
+}
