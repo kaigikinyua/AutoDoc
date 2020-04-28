@@ -42,10 +42,11 @@ class CodeParser:
             for line in filedata:
                 for char in line:
                     if(char==delimeter["start"]):
-                        print(line)
-                    
-
-    def filter_text(self,filepath):
+                        comment=Code.get_text_in_between(delimeter["start"],delimeter["end"],line)
+                        comments.append(comment)
+        return comments
+        
+    def filter_text(self,filedata):
         pass
 
     def code_blue_print(self,fileComments):
@@ -61,14 +62,19 @@ class CodeParser:
         pass
 
 
-
-    
 class Code:
-    def get_text_in_between(start,end):
-        pass
-
-    def get_commets():
-        pass
+    @staticmethod
+    def get_text_in_between(start,end,line):
+        lastChar=len(line)
+        index=0
+        for char in line:
+            if(char==" " or char=="\t"):
+                index+=1
+            elif(char==start):
+                break
+            else:
+                pass
+        return line[index+1:lastChar-1]            
 
     def formatComments():
         pass
