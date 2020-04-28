@@ -3,19 +3,19 @@
         {
             "format":"title",
             "delimeters":[
-                {"start":"t:","end":"/n"}
+                {"start":"T:","end":"/n"}
             ]
         },
         {
             "format":"subtitle",
             "delimeters":[
-                {"start":"st:","end":"/n"}
+                {"start":"sT:","end":"/n"}
             ]
         },
         {
             "format":"paragraph",
             "delimeters":[
-                {"start":"p:","end":"/n"}
+                {"start":"P:","end":"/n"}
             ]
         }
     ]

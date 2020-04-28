@@ -30,6 +30,7 @@ class CodeParser:
             data=Files.read_file(item)
             if(data!=False):
                 comments=self.filter_comments(data)
+                formatted_comments=self.formated_comments(comments)
             else:
                 print(data)
 
@@ -39,15 +40,19 @@ class CodeParser:
         comments=[]
         for delimeter in comments_delimeters:
             print(delimeter["start"])
+            lineIndex=0
             for line in filedata:
                 for char in line:
-                    if(char==delimeter["start"]):
+                    if(char==delimeter["start"] and line[len(line)-1]!=delimeter["end"]):
                         comment=Code.get_text_in_between(delimeter["start"],delimeter["end"],line)
                         comments.append(comment)
+                    else:
         return comments
-        
-    def filter_text(self,filedata):
-        pass
+
+    def formated_comments(self,comments):
+        for comment in comments:
+            split_comment=comment.split(":")
+            print(split_comment)
 
     def code_blue_print(self,fileComments):
         pass
