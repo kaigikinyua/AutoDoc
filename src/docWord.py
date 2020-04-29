@@ -37,23 +37,22 @@ class Documentation:
     def documentation_version(self):
         pass
 
-
-
-
-
-#Creating word documents
-class WordDoc:
-    file_path=""
-    def __init__(*args, **kwargs):
-        pass 
-
-    def new_paragraph(self,data):
+class Components:
+    
+    @staticmethod
+    def title(obj,title):
         pass
 
-    def title(self,text):
+    @staticmethod
+    def paragraph(obj,text):
         pass
-     
-    def new_page(self):
+
+    @staticmethod
+    def addList(obj,text):
+        pass
+
+    @staticmethod
+    def image(obj,imagePath):
         pass
 
 
