@@ -4,6 +4,11 @@ import json
 from messages import Messages
 
 class AutoDoc:
+    def __init__(*args, **kwargs):
+        #python autoDoc.py document 'targetDir' 'doctype' projectName
+        #python autoDoc.py logs projectName 
+        pass
+
     def main(self):
         print("WELCOME to autodoc!!\nPlease enter the project directory to start documenting your project automatically\n")
         if(self.project_dir("/home/antony/fajkfakl")):
@@ -57,7 +62,22 @@ class AutoDoc:
     def word_doc(self):
         pass 
 
-
+class DocumentationType:
+    @staticmethod
+    def word(targetDir):
+        pass
+    
+    @staticmethod
+    def html(targetDir):
+        pass
+    
+    @staticmethod
+    def markdown(targetDir):
+        pass
+    
+    @staticmethod
+    def all(targetDir):
+        pass
 
 if __name__=="__main__":
     a=AutoDoc()

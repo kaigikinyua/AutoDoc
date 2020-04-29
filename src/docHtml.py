@@ -1,17 +1,18 @@
-class Configs:
-    links=""
-    title=""
+class Html:
     def __init__(self):
-        try:
-            with open("index_spec.json","r") as j:
-                config=json.load(j)
-                self.links=config['links']
-                self.title=config['title']
-                Messages.success("Configs Loaded")
-        except:
-            Messages.error("Opening index_spec.json file")
+        pass
 
-class Components:
+    def loadConfigs(self):
+        pass
+
+    def documentationData(self,data):
+        pass
+
+    def create_page(self,pagename,pageData):
+        pass
+
+
+class HtmlComponents:
     theme="default"
     def __init__(self):
         pass

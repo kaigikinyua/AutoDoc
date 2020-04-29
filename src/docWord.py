@@ -37,7 +37,7 @@ class Documentation:
     def documentation_version(self):
         pass
 
-class Components:
+class WordComponents:
     
     @staticmethod
     def title(obj,title):
