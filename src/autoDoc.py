@@ -1,13 +1,18 @@
 import os
 import json
+import sys
 
-from messages import Messages
+from utils.messages import Message
 
 class AutoDoc:
-    def __init__(*args, **kwargs):
-        #python autoDoc.py document 'targetDir' 'doctype' projectName
-        #python autoDoc.py logs projectName 
-        pass
+    targetDir=""
+    dType=""
+    projectName=""
+    def __init__(self,targetDir,dType,projectName):
+        self.targetDir=targetDir
+        self.dType=dType
+        self.projectName=projectName
+        print(self.targetDir,self.dType,self.projectName)
 
     def main(self):
         print("WELCOME to autodoc!!\nPlease enter the project directory to start documenting your project automatically\n")
@@ -79,6 +84,21 @@ class DocumentationType:
     def all(targetDir):
         pass
 
+
+
 if __name__=="__main__":
-    a=AutoDoc()
-    a.main()
+    arguments=sys.argv
+    if(len(arguments)<2 or len(arguments)>5):
+        print("Available commands are : document <documentation_type> <target_directory> <project_name>")
+        print(":log <project_name>")
+    else:
+        if(arguments[1]=="document"):
+            a=AutoDoc(targetDir=arguments[3],dType=arguments[2],projectName=arguments[4])
+        elif(arguments[1]=="log"):
+            print(arguments)
+        else:
+            print(arguments[1]+" is unknown")
+            print("Available commands are : document <documentation_type> <target_directory> <project_name>")
+            print(":log <project_name>")
+    #a=AutoDoc()
+    #a.main()
