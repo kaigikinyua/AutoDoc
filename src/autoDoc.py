@@ -54,12 +54,6 @@ class AutoDoc:
             Messages.error(str(directory)+" is not a directory")
             return False
 
-    def comment_preceeding(self):
-        options={"1":"#","2":"//","3":"/*"}
-        pass 
-
-    def existing_docs(self):
-        pass
 
     def html_doc(self):
         pass
