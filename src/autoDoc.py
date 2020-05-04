@@ -1,42 +1,79 @@
 import os
 import json
 import sys
-from threading import *
+import threading
 from utils.messages import Message
+from utils.files import Files
 
 class AutoDoc:
     targetDir=""
     dType=""
     projectName=""
+
     def __init__(self,targetDir,dType,projectName):
         self.targetDir=targetDir
         self.dType=dType
         self.projectName=projectName
 
     def start_documentation(self):
-        pass
+        if(Files.dir_exists(self.targetDir)):
+            
+            DocumentationType.dirList=Files.listTargetDir(self.targetDir)
+            
+            if(self.dType=="all"):
+                self.word=threading.Thread(target=DocumentationType.word,args=(self.targetDir,))
+                self.markdown=threading.Thread(target=DocumentationType.markdown,args=(self.targetDir,))
+                self.html=threading.Thread(target=DocumentationType.html,args=(self.targetDir,))
 
-    def get_documentation_type(self):
-        pass
+                self.word.start()
+                self.markdown.start()
+                self.html.start()
+
+            elif(self.dType=="markdown"):
+                self.markdown=threading.Thread(target=DocumentationType.markdown,args=(self.targetDir,))
+                self.markdown.start()
+
+            elif(self.dType=="word"):
+                self.word=threading.Thread(target=DocumentationType.word,args=(self.targetDir,))
+                self.word.start()
+
+            elif(self.dType=="html"):
+                self.html=threading.Thread(target=DocumentationType.html,args=(self.targetDir,))
+                self.html.start()
+
+            else:
+                Message.error("Unkown documentation type: "+str(self.dType))
+        else:
+            Message.error(str(self.targetDir)+" is not a directory or does not exist")
+    
 
 class DocumentationType:
+    dirList=[]
+    word_state={"error":False,"message":"","dumpDir":""}
+    html_state={"error":False,"message":"","dumpDir":""}
+    mrkdown_state={"error":False,"message":"","dumpDir":""}
+
     @staticmethod
     def word(targetDir):
-        pass
-    
+        Message.loading("Creating Auto_WordDocs")
+        Files.create_dir(targetDir+"/Auto_WordDocs")
+        for item in DocumentationType.dirList:
+            Message.loading("Word Documenting "+str(item))
+
     @staticmethod
     def html(targetDir):
-        pass
+        Message.loading("Creating Auto_HtmlDocs")
+        Files.create_dir(targetDir+"/Auto_HtmlDocs")
+        for item in DocumentationType.dirList:
+            Message.loading("Html Documenting "+str(item))
     
     @staticmethod
     def markdown(targetDir):
-        pass
+        Message.loading("Creating Auto_MarkDownDocs")
+        Files.create_dir(targetDir+"/Auto_MrkDownDocs")
+        for item in DocumentationType.dirList:
+            Message.loading("MarkDown Documenting "+str(item))
     
-    @staticmethod
-    def all(targetDir):
-        pass
-
-
 
 if __name__=="__main__":
     arguments=sys.argv
@@ -46,6 +83,7 @@ if __name__=="__main__":
     else:
         if(arguments[1]=="document"):
             a=AutoDoc(targetDir=arguments[3],dType=arguments[2],projectName=arguments[4])
+            a.start_documentation()
         elif(arguments[1]=="log"):
             print(arguments)
         else:

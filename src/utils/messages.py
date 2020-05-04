@@ -1,4 +1,4 @@
-
+import time
 class Message:    
     @staticmethod
     def error(message):
@@ -15,10 +15,13 @@ class Message:
         print(f"{message}") 
 
     @staticmethod
-    def loading(message,waiting):
-        animation=['|','/','--','\']
+    def loading(message):
+        animation=['|','/','-','|','\\']
         i=0
-        while waiting:
-            print(f"{message} ..... {animation[i]}")
+        while True:
+            print(str(message)+"....."+animation[i],end="\r")
+            i+=1
             if(i==len(animation)-1):
                 i=0
+            time.sleep(0.4)
+
