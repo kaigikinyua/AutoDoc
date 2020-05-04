@@ -13,3 +13,12 @@ class Message:
     @staticmethod
     def message(message):
         print(f"{message}") 
+
+    @staticmethod
+    def loading(message,waiting):
+        animation=['|','/','--','\']
+        i=0
+        while waiting:
+            print(f"{message} ..... {animation[i]}")
+            if(i==len(animation)-1):
+                i=0
