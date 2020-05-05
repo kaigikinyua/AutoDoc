@@ -1,7 +1,11 @@
-class CreateMarkDown:
-    def fromFile(self,filePath):
+class MarkDown:
+    def __init__(self):
         pass
-    def fromText(self,data):
+
+    def loadConfigs(self):
+        pass
+
+    def documentFile(self):
         pass
 
 class MarkDownComponents:

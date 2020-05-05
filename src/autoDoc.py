@@ -74,6 +74,10 @@ class DocumentationType:
         for item in DocumentationType.dirList:
             Message.loading("MarkDown Documenting "+str(item))
     
+    @staticmethod
+    def genAutoDoc(targetDir):
+        pass
+    
 
 if __name__=="__main__":
     arguments=sys.argv
