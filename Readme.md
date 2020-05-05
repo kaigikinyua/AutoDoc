@@ -13,9 +13,9 @@ The program only creates a skeleton of the documentation.Document formatting is 
 * docx - word library for python
 
 ## Features will include.
-* 1.*Reading source code* and filtering the code from the comments necessary to documentation
-* 2.*Creating a short brief documentation* (word document and markdown)
-* 3.*Creating logs for documented projects*
+* *Reading source code* and filtering the code from the comments necessary to documentation
+* *Creating a short brief documentation* (word document and markdown)
+* *Creating logs for documented projects*
 
 ## Run
 ### Creating a new document from source
