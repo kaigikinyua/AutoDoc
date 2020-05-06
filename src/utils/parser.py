@@ -87,9 +87,3 @@ class Code:
 
     def formatCode():
         pass
-
-class AutoDocParser:
-    pass
-
-c=CodeParser("./test")
-c.parseStart()

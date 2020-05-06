@@ -16,29 +16,34 @@ class HtmlComponents:
 
     #major components
     @staticmethod
-    def navigation_links(self,link_title):
-        pass 
+    def navigation_links(self,link_title,link_to):
+        return "<a href='"+str(link_to)+"'>"+link_title+"</a>" 
 
     @staticmethod
     def code_segment(self,code):
-        pass 
+        return "<code>"+str(code)+"</code>" 
 
     @staticmethod
     def images(self,image_dir):
-        pass 
+        return "<img src='"+str(image_dir)+"'/>" 
 
     @staticmethod
     def title(self,title):
-        pass
+        return "<h3 class='title'>"+str(title)+"</h3>"
+
     @staticmethod
     def paragraph(self,text_paragraph):
-        pass
+        return "<p>"+str(text_paragraph)+"</p>"
 
     @staticmethod
     def unorderdList(self,listdata):
-        pass
+        ul="<ul class='list'>"
+        for item in listdata:
+            ul+="/n"+"<li>"+item+"</li>"
+        return ul+"/n"
 
     #layout
+    """
     @staticmethod
     def slider(self):
         pass
@@ -51,4 +56,4 @@ class HtmlComponents:
     def sidenav(self):
         pass 
 
- 
+    """
