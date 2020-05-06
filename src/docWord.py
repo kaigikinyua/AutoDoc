@@ -43,3 +43,7 @@ class WordComponents:
     @staticmethod
     def image(obj,imagePath):
         pass
+
+    @staticmethod
+    def italic(text):
+        pass

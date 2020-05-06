@@ -83,7 +83,5 @@ class Code:
         return line[index+1:lastChar-1]            
 
     def formatComments():
-        pass
-
-    def formatCode():
+        formats=Files.load_json("./Configs/formats/comments.json")
         pass

@@ -27,12 +27,12 @@ class MarkDownComponents:
         listD=""
         for item in listData:
             listD+="* "+item+"\n"
-        return listD
+        return listD+"\n"
 
     @staticmethod
     def italic(text):
         return "*"+text+"*"
-        
+
     @staticmethod
     def image(imagePath):
         pass
