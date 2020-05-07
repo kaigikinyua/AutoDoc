@@ -1,5 +1,5 @@
-from utils.messages import Message
-from utils.files import Files
+from messages import Message
+from files import Files
 
 class CodeParser:
     targetDir=""
@@ -10,6 +10,9 @@ class CodeParser:
         self.targetDir=targetDir
         self.fileList=Files.listTargetDir(targetDir)
         self.docDir=Files.create_dir(targetDir+"/autoDoc")
+        self.languages=Files.load_json("./Configs/formats/languages.json")
+        self.comments_delimeters=self.languages["languages"][0]["delimeters"]
+
         if(self.docDir==False):
             self.error=True
     
@@ -35,25 +38,27 @@ class CodeParser:
                 print(data)
 
     def filter_comments(self,filedata):
-        languages=Files.load_json("./Configs/formats/languages.json")
-        comments_delimeters=languages["languages"][0]["delimeters"]
         comments=[]
-        for delimeter in comments_delimeters:
-            print(delimeter["start"])
+        for delimeter in self.comments_delimeters:
+            #print(delimeter["start"])
             lineIndex=0
             for line in filedata:
-                for char in line:
-                    if(char==delimeter["start"] and line[len(line)-1]!=delimeter["end"]):
-                        comment=Code.get_text_in_between(delimeter["start"],delimeter["end"],line)
-                        comments.append(comment)
-                
-                
+                if delimeter["start"] in line:
+                    comments+=[line]
+                lineIndex+=1
         return comments
 
     def formated_comments(self,comments):
+        refined_comments=[]
         for comment in comments:
             split_comment=comment.split(":")
-            print(split_comment)
+            comment_start=""
+            for char in split_comment[0]:
+                if(char!="\t" and char!=" "):
+                    comment_start+=char
+            split_comment[0]=comment_start[1:len(comment_start)]
+            refined_comments+=[split_comment]
+        print(refined_comments)
 
     def code_blue_print(self,fileComments):
         pass
@@ -85,3 +90,6 @@ class Code:
     def formatComments():
         formats=Files.load_json("./Configs/formats/comments.json")
         pass
+
+p=CodeParser("/home/antony/Pit/Projects/desktop/autoDoc/src/test")
+p.parseStart()

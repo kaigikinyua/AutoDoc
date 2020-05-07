@@ -1,5 +1,3 @@
-
-
 #T: test class
 class MyClass:
     def __init__(self):
@@ -10,6 +8,3 @@ class MyClass:
     @staticmethod
     def add(a,b):
         return a+b
-''' 
-    long comments in python
-'''
