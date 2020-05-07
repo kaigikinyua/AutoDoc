@@ -72,12 +72,14 @@ class CodeParser:
         comment=[]
         while(lineIndex<len(filedata)):
             if end in filedata[lineIndex]:
-                print(comment)
+                comment+=[lineIndex]
             elif filedata[lineIndex]!="\n":
                 comment+=[filedata[lineIndex]]
             lineIndex+=1
-
-
+        revised_comments=comment[1:len(comment)-1]
+        revised_comments=self.formated_comments(revised_comments)
+        print(revised_comments)
+        return revised_comments
     def code_blue_print(self,fileComments):
         pass
 
