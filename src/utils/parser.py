@@ -1,6 +1,8 @@
 from messages import Message
 from files import Files
 
+import re
+
 class CodeParser:
     targetDir=""
     fileList=[]
@@ -43,8 +45,11 @@ class CodeParser:
             #print(delimeter["start"])
             lineIndex=0
             for line in filedata:
-                if delimeter["start"] in line:
-                    comments+=[line]
+                if delimeter["start"] in line and delimeter["end"] in line:
+                    comments+=[Code.get_text_in_between(delimeter["start"],delimeter["end"],line)]
+                #finding the start delimeter and the last delimeter[multiple line comment]
+                elif(delimeter["start"] in line and line[len(line)-1]=="\n"):
+                    self.multiple_line_comment(lineIndex,filedata,delimeter["start"],delimeter["end"])
                 lineIndex+=1
         return comments
 
@@ -56,9 +61,22 @@ class CodeParser:
             for char in split_comment[0]:
                 if(char!="\t" and char!=" "):
                     comment_start+=char
-            split_comment[0]=comment_start[1:len(comment_start)]
+            #split_comment[0]=comment_start[1:len(comment_start)]
+            split_comment[0]=comment_start
             refined_comments+=[split_comment]
         print(refined_comments)
+
+
+    def multiple_line_comment(self,lineIndex,filedata,start,end):
+        print(filedata[lineIndex])
+        comment=[]
+        while(lineIndex<len(filedata)):
+            if end in filedata[lineIndex]:
+                print(comment)
+            elif filedata[lineIndex]!="\n":
+                comment+=[filedata[lineIndex]]
+            lineIndex+=1
+
 
     def code_blue_print(self,fileComments):
         pass

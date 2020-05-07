@@ -8,3 +8,7 @@ class MyClass:
     @staticmethod
     def add(a,b):
         return a+b
+
+'''
+    Python is a good programming language
+'''
