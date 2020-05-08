@@ -1,6 +1,6 @@
 import os
 import json
-from messages import Message
+from utils.messages import Message
 #t:CRUD file operations
 #p:Create,Read,Update/Append,Delete
 class Files:

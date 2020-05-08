@@ -18,10 +18,12 @@ class Message:
     def loading(message):
         animation=['|','/','-','|','\\']
         i=0
-        while True:
+        j=10
+        while(j>0):
             print(str(message)+"....."+animation[i],end="\r")
             i+=1
             if(i==len(animation)-1):
                 i=0
+            j-=1
             time.sleep(0.4)
 

@@ -1,13 +1,14 @@
-from messages import Message
-from files import Files
+from utils.messages import Message
+from utils.files import Files
 
-import re
+#import re
 
 class CodeParser:
     targetDir=""
     fileList=[]
     docDir=""
     error=False
+
     def __init__(self,targetDir):
         self.targetDir=targetDir
         self.fileList=Files.listTargetDir(targetDir)
@@ -66,7 +67,6 @@ class CodeParser:
             refined_comments+=[split_comment]
         print(refined_comments)
 
-
     def multiple_line_comment(self,lineIndex,filedata,start,end):
         print(filedata[lineIndex])
         comment=[]
@@ -80,18 +80,6 @@ class CodeParser:
         revised_comments=self.formated_comments(revised_comments)
         print(revised_comments)
         return revised_comments
-    def code_blue_print(self,fileComments):
-        pass
-
-    def code_segment(self):
-        pass 
-
-    def group_paragraph(self):
-        pass
-    
-    def adjuscentDocs(self,targetDir):
-        pass
-
 
 class Code:
     @staticmethod
@@ -111,5 +99,5 @@ class Code:
         formats=Files.load_json("./Configs/formats/comments.json")
         pass
 
-p=CodeParser("/home/antony/Pit/Projects/desktop/autoDoc/src/test")
-p.parseStart()
+#p=CodeParser("/home/antony/Pit/Projects/desktop/autoDoc/src/test")
+#p.parseStart()

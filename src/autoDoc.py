@@ -2,8 +2,10 @@ import os
 import json
 import sys
 import threading
+
 from utils.messages import Message
 from utils.files import Files
+from utils.parser import CodeParser
 
 class AutoDoc:
     targetDir=""
@@ -19,7 +21,7 @@ class AutoDoc:
         if(Files.dir_exists(self.targetDir)):
             
             DocumentationType.dirList=Files.listTargetDir(self.targetDir)
-            
+
             if(self.dType=="all"):
                 self.word=threading.Thread(target=DocumentationType.word,args=(self.targetDir,))
                 self.markdown=threading.Thread(target=DocumentationType.markdown,args=(self.targetDir,))
@@ -49,35 +51,37 @@ class AutoDoc:
 
 class DocumentationType:
     dirList=[]
-    word_state={"error":False,"message":"","dumpDir":""}
-    html_state={"error":False,"message":"","dumpDir":""}
-    mrkdown_state={"error":False,"message":"","dumpDir":""}
+    word_state={"error":False,"message":"","dumpDir":"","fileIndex":0}
+    html_state={"error":False,"message":"","dumpDir":"","fileIndex":0}
+    mrkdown_state={"error":False,"message":"","dumpDir":"","fileIndex":0}
+
+    @staticmethod
+    def printDirList():
+        print(DocumentationType.dirList)
 
     @staticmethod
     def word(targetDir):
         Message.loading("Creating Auto_WordDocs")
         Files.create_dir(targetDir+"/Auto_WordDocs")
         for item in DocumentationType.dirList:
-            Message.loading("Word Documenting "+str(item))
+            DocumentationType.word_state["fileIndex"]+=1
+        print(DocumentationType.word_state["fileIndex"])
 
     @staticmethod
     def html(targetDir):
         Message.loading("Creating Auto_HtmlDocs")
         Files.create_dir(targetDir+"/Auto_HtmlDocs")
         for item in DocumentationType.dirList:
-            Message.loading("Html Documenting "+str(item))
+            DocumentationType.html_state["fileIndex"]+=1
+        print(DocumentationType.html_state["fileIndex"])
     
     @staticmethod
     def markdown(targetDir):
         Message.loading("Creating Auto_MarkDownDocs")
         Files.create_dir(targetDir+"/Auto_MrkDownDocs")
         for item in DocumentationType.dirList:
-            Message.loading("MarkDown Documenting "+str(item))
-    
-    @staticmethod
-    def genAutoDoc(targetDir):
-        pass
-    
+            DocumentationType.mrkdown_state["fileIndex"]+=1
+        print(DocumentationType.mrkdown_state["fileIndex"])
 
 if __name__=="__main__":
     arguments=sys.argv
