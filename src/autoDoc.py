@@ -83,6 +83,9 @@ class DocumentationType:
             DocumentationType.mrkdown_state["fileIndex"]+=1
         print(DocumentationType.mrkdown_state["fileIndex"])
 
+
+
+
 if __name__=="__main__":
     arguments=sys.argv
     if(len(arguments)<2 or len(arguments)>5):

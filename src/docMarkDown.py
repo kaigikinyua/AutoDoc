@@ -9,7 +9,7 @@ class MarkDown:
         pass
 
 class MarkDownComponents:
-
+    
     @staticmethod
     def title(title,level):
         t="#"

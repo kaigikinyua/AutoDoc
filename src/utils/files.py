@@ -1,5 +1,6 @@
 import os
 import json
+import shutil
 from utils.messages import Message
 #t:CRUD file operations
 #p:Create,Read,Update/Append,Delete
@@ -90,6 +91,17 @@ class Files:
         else:
             Message.error("Could not append to file "+str(file_path))
             return False
+
+    @staticmethod
+    def copy_file(origin_path,destination_path):
+        if(Files.file_exists(origin_path)):
+            try:
+                shutil.copy(origin_path,destination_path)
+                Message.success("Copied file "+str(origin_path)+" to "+str(destination_path))
+            except:
+                Message.error("Could not copy file "+str(origin_path)+" to "+str(destination_path))
+        else:
+            Message.error("File "+str(origin_path)+" does not exist")
 
     @staticmethod
     def delete_file(file_path):
