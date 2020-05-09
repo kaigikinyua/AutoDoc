@@ -127,3 +127,8 @@ class Files:
         else:
             Message.error("File "+file_path+" does not exist")
             return False
+
+    @staticmethod
+    def getfileName(filePath):
+        split_text=filePath.split("/")
+        return split_text[len(split_text)-1]

@@ -51,12 +51,12 @@ class CodeParser:
                     comments+=[Code.get_text_in_between(delimeter["start"],delimeter["end"],line)]
                 #finding the start delimeter and the last delimeter[multiple line comment]
                 elif(delimeter["start"] in line and line[len(line)-1]=="\n"):
-                    print("Multiple line comment")
+                
                     multiple_comments=self.multiple_line_comment(lineIndex,filedata,delimeter["start"],delimeter["end"])
                     combined=""
                     for c in multiple_comments:
-                        combined+=str("P:"+c[0])
-                    comments+=[combined]
+                        combined+=str(c[0])
+                    comments+=["P:"+combined]
                 lineIndex+=1
         return comments
 

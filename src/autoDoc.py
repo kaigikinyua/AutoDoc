@@ -66,13 +66,19 @@ class DocumentationType:
 
     @staticmethod
     def html(targetDir):
+        from docHtml import Html
+
         Message.loading("Creating Auto_HtmlDocs")
+        DocumentationType.html_state["dumpDir"]=targetDir+"/Auto_HtmlDocs"
         #Files.create_dir(targetDir+"/Auto_HtmlDocs")
         for item in DocumentationType.dirList:
-            DocumentationType.parseFile(item)
-            #print(item+" html")
+            parsedData=DocumentationType.parseFile(item)
+            filename=Files.getfileName(item)
+            h=Html(filename,parsedData,DocumentationType.html_state["dumpDir"])
+            h.documentFile()
+            
             DocumentationType.html_state["fileIndex"]+=1
-        print(DocumentationType.html_state["fileIndex"])
+        #print(DocumentationType.html_state["fileIndex"])
     
     @staticmethod
     def markdown(targetDir):
@@ -87,7 +93,6 @@ class DocumentationType:
         p=CodeParser()
         comments=p.parseStart(filepath)
         if(comments!=False):
-            print(comments)
             return comments
         else:
             Message.error("Could not parse file "+filepath)

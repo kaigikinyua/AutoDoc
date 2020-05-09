@@ -10,6 +10,8 @@ class Html:
         return Files.load_json(configFilePath)
 
     def documentFile(self):
+        #create page
+        #
         switcher={
             1:"T:",
             2:"sT:",
