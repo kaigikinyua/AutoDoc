@@ -5,7 +5,6 @@
             "delimeters":[
                 {"start":"#","end":"\n"},
                 {"start":"'''","end":"'''"},
-                {"start":"<!--","end":"-->"},
                 {"start":"//","end":"\n"},
                 {"start":"/*","end":"*/"}
             ]

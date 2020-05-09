@@ -51,18 +51,15 @@ class AutoDoc:
 
 class DocumentationType:
     dirList=[]
+    parsedData=[]
     word_state={"error":False,"message":"","dumpDir":"","fileIndex":0}
     html_state={"error":False,"message":"","dumpDir":"","fileIndex":0}
     mrkdown_state={"error":False,"message":"","dumpDir":"","fileIndex":0}
 
     @staticmethod
-    def printDirList():
-        print(DocumentationType.dirList)
-
-    @staticmethod
     def word(targetDir):
         Message.loading("Creating Auto_WordDocs")
-        Files.create_dir(targetDir+"/Auto_WordDocs")
+        #Files.create_dir(targetDir+"/Auto_WordDocs")
         for item in DocumentationType.dirList:
             DocumentationType.word_state["fileIndex"]+=1
         print(DocumentationType.word_state["fileIndex"])
@@ -70,18 +67,30 @@ class DocumentationType:
     @staticmethod
     def html(targetDir):
         Message.loading("Creating Auto_HtmlDocs")
-        Files.create_dir(targetDir+"/Auto_HtmlDocs")
+        #Files.create_dir(targetDir+"/Auto_HtmlDocs")
         for item in DocumentationType.dirList:
+            DocumentationType.parseFile(item)
+            #print(item+" html")
             DocumentationType.html_state["fileIndex"]+=1
         print(DocumentationType.html_state["fileIndex"])
     
     @staticmethod
     def markdown(targetDir):
         Message.loading("Creating Auto_MarkDownDocs")
-        Files.create_dir(targetDir+"/Auto_MrkDownDocs")
+        #Files.create_dir(targetDir+"/Auto_MrkDownDocs")
         for item in DocumentationType.dirList:
             DocumentationType.mrkdown_state["fileIndex"]+=1
         print(DocumentationType.mrkdown_state["fileIndex"])
+    
+    @staticmethod
+    def parseFile(filepath):
+        p=CodeParser()
+        comments=p.parseStart(filepath)
+        if(comments!=False):
+            print(comments)
+            return comments
+        else:
+            Message.error("Could not parse file "+filepath)
 
 
 

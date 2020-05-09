@@ -9,15 +9,15 @@ class CodeParser:
     docDir=""
     error=False
 
-    def __init__(self,targetDir):
-        self.targetDir=targetDir
-        self.fileList=Files.listTargetDir(targetDir)
-        self.docDir=Files.create_dir(targetDir+"/autoDoc")
+    def __init__(self):
+        #self.targetFile=targetFile
+        #self.fileList=Files.listTargetDir(targetDir)
+        #self.docDir=Files.create_dir(targetDir+"/autoDoc")
         self.languages=Files.load_json("./Configs/formats/languages.json")
         self.comments_delimeters=self.languages["languages"][0]["delimeters"]
 
-        if(self.docDir==False):
-            self.error=True
+        #if(self.docDir==False):
+        #    self.error=True
     
     #decorators
     def check_error(original_function):
@@ -30,15 +30,16 @@ class CodeParser:
         return wrapper_function
     #dec end
 
-    def parseStart(self):
-        for item in self.fileList:
-            Message.success("Reading file "+item+".....")
-            data=Files.read_file(item)
-            if(data!=False):
-                comments=self.filter_comments(data)
-                formatted_comments=self.formated_comments(comments)
-            else:
-                print(data)
+    def parseStart(self,filePath):
+        Message.success("Reading file "+filePath+".....")
+        data=Files.read_file(filePath)
+        if(data!=False):
+            comments=self.filter_comments(data)
+            formatted_comments=self.formated_comments(comments)
+            return comments
+        else:
+            Message.error("Could not parse file "+str(filePath))
+            return False
 
     def filter_comments(self,filedata):
         comments=[]
@@ -46,29 +47,38 @@ class CodeParser:
             #print(delimeter["start"])
             lineIndex=0
             for line in filedata:
-                if delimeter["start"] in line and delimeter["end"] in line:
+                if delimeter["start"] in line and delimeter["end"]==line[len(line)-1]:
                     comments+=[Code.get_text_in_between(delimeter["start"],delimeter["end"],line)]
                 #finding the start delimeter and the last delimeter[multiple line comment]
                 elif(delimeter["start"] in line and line[len(line)-1]=="\n"):
-                    self.multiple_line_comment(lineIndex,filedata,delimeter["start"],delimeter["end"])
+                    print("Multiple line comment")
+                    multiple_comments=self.multiple_line_comment(lineIndex,filedata,delimeter["start"],delimeter["end"])
+                    combined=""
+                    for c in multiple_comments:
+                        combined+=str("P:"+c[0])
+                    comments+=[combined]
                 lineIndex+=1
         return comments
 
     def formated_comments(self,comments):
         refined_comments=[]
         for comment in comments:
-            split_comment=comment.split(":")
-            comment_start=""
-            for char in split_comment[0]:
-                if(char!="\t" and char!=" "):
-                    comment_start+=char
-            #split_comment[0]=comment_start[1:len(comment_start)]
-            split_comment[0]=comment_start
-            refined_comments+=[split_comment]
-        print(refined_comments)
+            try:
+                split_comment=comment.split(":")
+                comment_start=""
+                for char in split_comment[0]:
+                    if(char!="\t"):
+                        comment_start+=char
+                #split_comment[0]=comment_start[1:len(comment_start)]
+                split_comment[0]=comment_start
+                refined_comments+=[split_comment]
+            except:
+                refined_comments+=[comment]
+        #print(refined_comments)
+        return refined_comments
 
     def multiple_line_comment(self,lineIndex,filedata,start,end):
-        print(filedata[lineIndex])
+        #print(filedata[lineIndex])
         comment=[]
         while(lineIndex<len(filedata)):
             if end in filedata[lineIndex]:
@@ -78,7 +88,6 @@ class CodeParser:
             lineIndex+=1
         revised_comments=comment[1:len(comment)-1]
         revised_comments=self.formated_comments(revised_comments)
-        print(revised_comments)
         return revised_comments
 
 class Code:
@@ -95,8 +104,8 @@ class Code:
                 pass
         return line[index+1:lastChar-1]            
 
-    def formatComments():
-        formats=Files.load_json("./Configs/formats/comments.json")
+    @staticmethod
+    def get_multiple_line_comments(start,end,lines):
         pass
 
 #p=CodeParser("/home/antony/Pit/Projects/desktop/autoDoc/src/test")

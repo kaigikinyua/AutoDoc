@@ -16,7 +16,7 @@ class Html:
             3:"P:",
             4:"I:",
         }
-        for item in parsedData:
+        for item in self.parsedData:
             print(item)
 
 
