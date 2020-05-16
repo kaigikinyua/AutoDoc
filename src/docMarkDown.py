@@ -1,9 +1,12 @@
+from utils.files import Files
 class MarkDown:
-    def __init__(self):
-        pass
+    def __init__(self,markDownFile,parsedData):
+        self.markDownFile=markDownFile
+        self.parsedData=parsedData
+        self.configs=self.loadConfigs("./Configs/formats/comments.json")
 
-    def loadConfigs(self):
-        pass
+    def loadConfigs(self,configsPath):
+        return Files.load_json(configsPath)
 
     def documentFile(self):
         pass
