@@ -9,7 +9,18 @@ class MarkDown:
         return Files.load_json(configsPath)
 
     def documentFile(self):
-        pass
+        for data in self.parsedData:
+            #switch case
+            if(data=="t"):
+                pass
+            elif data=="p":
+                pass
+            elif data=="i":
+                pass
+            elif data=="sT":
+                pass
+            elif data=="list":
+                pass
 
 class MarkDownComponents:
     
