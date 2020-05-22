@@ -9,18 +9,19 @@ class MarkDown:
         return Files.load_json(configsPath)
 
     def documentFile(self):
-        for data in self.parsedData:
-            #switch case
-            if(data=="t"):
-                pass
-            elif data=="p":
-                pass
-            elif data=="i":
-                pass
-            elif data=="sT":
-                pass
-            elif data=="list":
-                pass
+        for elem in self.parsedData:
+            self.documentElement(element)
+
+    def documentElement(self,element):
+        splitElement=element.split(":")
+        return {
+            "T":lambda: MarkDownComponents.title(splitElement[1],1),
+            "sT":lambda: MarkDownComponents.title(splitElement[1],2),
+            "P":lambda: MarkDownComponents.paragraph(splitElement[1]),
+            "I":lambda: MarkDownComponents.image(splitElement[1]),
+            "i":lambda: MarkDownComponents.italic(splitElement[1])
+            #"L":lambda: MarkDownComponents.title(splitElement[1])
+        }.get(splitElement[0],lambda: None)()
 
 class MarkDownComponents:
     
@@ -49,5 +50,5 @@ class MarkDownComponents:
 
     @staticmethod
     def image(imagePath):
-        pass
+        return "![Screenshot]"+str(imagePath)
 
