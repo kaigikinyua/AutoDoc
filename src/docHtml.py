@@ -9,17 +9,22 @@ class Html:
     def loadConfigs(self,configFilePath):
         return Files.load_json(configFilePath)
 
-    def documentFile(self):
+    def startDocumentation(self):
+        for element in self.parsedData:
+            self.documentElement(element)
+
+    def documentElement(self,element):
         #create page
         #
-        switcher={
-            1:"T:",
-            2:"sT:",
-            3:"P:",
-            4:"I:",
-        }
-        for item in self.parsedData:
-            print(item)
+        split_element=element.split(":")
+        return {
+            "T":lambda:HtmlComponents.title(split_element[1]),
+            "sT":lambda:HtmlComponents.subTitle(split_element[1]),
+            "P":lambda:HtmlComponents.paragraph(split_element[1]),
+            "I":lambda:HtmlComponents.images(split_element[1]),
+            #"L":lambda:HtmlComponents.title(split_element[1]),
+        }.get(split_element[0],lambda: None)()
+        
 
 
 class HtmlComponents:
@@ -48,8 +53,12 @@ class HtmlComponents:
 
     @staticmethod
     def title(title):
+        print(title)
         return "<h3 class='title'>"+str(title)+"</h3>\n"
 
+    @staticmethod
+    def subTitle(subTitle):
+        return "<h3 class='subtitle'>"+str(subTitle)+"</h3>"
     @staticmethod
     def paragraph(text_paragraph):
         return "<p>"+str(text_paragraph)+"</p>\n"

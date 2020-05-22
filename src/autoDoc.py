@@ -75,7 +75,7 @@ class DocumentationType:
             parsedData=DocumentationType.parseFile(item)
             filename=Files.getfileName(item)
             h=Html(filename,parsedData,DocumentationType.html_state["dumpDir"])
-            h.documentFile()
+            h.startDocumentation()
             
             DocumentationType.html_state["fileIndex"]+=1
         #print(DocumentationType.html_state["fileIndex"])
