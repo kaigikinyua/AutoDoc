@@ -13,8 +13,9 @@ class Html:
         formated_data=""
         for element in self.parsedData:
             formated_data+=self.documentElement(element)
-        print(formated_data)
-
+        #print(formated_data)
+        return formated_data
+        
     def documentElement(self,element):
         split_element=element.split(":")
         return {

@@ -12,7 +12,7 @@ class MarkDown:
         formated_data=""
         for element in self.parsedData:
             formated_data+=str(self.documentElement(element))
-        print(formated_data)
+        return formated_data
 
     def documentElement(self,element):
         splitElement=element.split(":")
