@@ -42,12 +42,30 @@ class AutoDoc:
             elif(self.dType=="html"):
                 self.html=threading.Thread(target=DocumentationType.html,args=(self.targetDir,))
                 self.html.start()
-
             else:
                 Message.error("Unkown documentation type: "+str(self.dType))
         else:
             Message.error(str(self.targetDir)+" is not a directory or does not exist")
     
+
+class Logs:
+    def allProjectsData(self):
+        pass
+
+    def particularProject(self):
+        pass
+
+    def successFullProjectBuilds(self):
+        pass
+
+    def failedProjectBuilds(self):
+        pass
+
+    def requestInput(self,message):
+        pass
+
+
+
 
 class DocumentationType:
     dirList=[]
@@ -111,9 +129,16 @@ if __name__=="__main__":
         print("Available commands are : document <documentation_type> <target_directory> <project_name>")
         print(":log <project_name>")
     else:
+        #documenting entire source code
         if(arguments[1]=="document"):
             a=AutoDoc(targetDir=arguments[3],dType=arguments[2],projectName=arguments[4])
             a.start_documentation()
+
+        #documenting single autoDoc Files
+        elif(arguments[1]=="documentFile"):
+            pass
+
+        #logs
         elif(arguments[1]=="log"):
             print(arguments)
         else:
