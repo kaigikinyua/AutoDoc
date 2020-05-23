@@ -10,12 +10,12 @@ class Html:
         return Files.load_json(configFilePath)
 
     def startDocumentation(self):
+        formated_data=""
         for element in self.parsedData:
-            self.documentElement(element)
+            formated_data+=self.documentElement(element)
+        print(formated_data)
 
     def documentElement(self,element):
-        #create page
-        #
         split_element=element.split(":")
         return {
             "T":lambda:HtmlComponents.title(split_element[1]),

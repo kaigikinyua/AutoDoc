@@ -9,8 +9,10 @@ class MarkDown:
         return Files.load_json(configsPath)
 
     def documentFile(self):
-        for elem in self.parsedData:
-            self.documentElement(element)
+        formated_data=""
+        for element in self.parsedData:
+            formated_data+=str(self.documentElement(element))
+        print(formated_data)
 
     def documentElement(self,element):
         splitElement=element.split(":")
@@ -31,7 +33,7 @@ class MarkDownComponents:
         while(level>0):
             t+="#"
             level-=1
-        return title+" "+level+"\n"
+        return t+" "+title
 
     @staticmethod
     def paragraph(text):

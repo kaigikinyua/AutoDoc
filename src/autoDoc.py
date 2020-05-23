@@ -82,9 +82,14 @@ class DocumentationType:
     
     @staticmethod
     def markdown(targetDir):
+        from docMarkDown import MarkDown
         Message.loading("Creating Auto_MarkDownDocs")
         #Files.create_dir(targetDir+"/Auto_MrkDownDocs")
         for item in DocumentationType.dirList:
+            parsedData=DocumentationType.parseFile(item)
+            filename=Files.getfileName(item)
+            m=MarkDown(filename,parsedData)
+            m.documentFile()
             DocumentationType.mrkdown_state["fileIndex"]+=1
         print(DocumentationType.mrkdown_state["fileIndex"])
     
