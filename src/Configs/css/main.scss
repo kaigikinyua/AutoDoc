@@ -2,19 +2,22 @@ $background:lightgray;
 $foreground:skyblue;
 $bright:white;
 
+*{
+    padding:0px;
+    margin:0px;
+}
 
 //text
 .title{
     font-family: Arial, Helvetica, sans-serif;
     font-size: 22px;
     margin:10px 0px;
-    color:$bright;
 }
 .subtitle{
     font-family: monospace;
     font-size: 18px;
     margin:8px 0px;
-    color:darken($bright,10%);
+    color:ligten(black,10%);
 }
 .text{
     font-family: Arial, Helvetica, sans-serif;
@@ -25,9 +28,21 @@ $bright:white;
 
 
 //containers
-div.topnav{
+nav.topnav{
     position: fixed;
     top:0px;
     width: 100%;
-    padding:10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    box-shadow: 1px 1px 10px 10px gray;
+    div{
+        text-align: center;
+    }
+}
+
+nav.sideNav{
+    position: fixed;
+    right:0px;top:0px;
+    width: 400px;height:100vh;
+    background:lightslategray;
 }
