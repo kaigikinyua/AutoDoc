@@ -110,7 +110,7 @@ class DocumentationType:
             parsedData=DocumentationType.parseFile(item)
             filename=Files.getfileName(item)
             m=MarkDown(filename,parsedData)
-            
+            documented+"\n\n"
             documented+=MarkDownComponents.italic(filename)
             documented+="\n"
 

@@ -1,13 +1,12 @@
-/*P:
-    Removing default padding and margin
-*/
+/*P:Removing default padding and margin*/
 
-.title{
+div.title{
     font-family: Arial;
     font-weight: lighter;
     font-size: 20px;
 }
-.subtitle{
+
+div.subtitle{
     font-family: Arial;
     font-weight: lighter;
     font-size: 20px;
