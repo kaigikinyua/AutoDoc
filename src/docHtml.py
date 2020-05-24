@@ -32,13 +32,23 @@ class HtmlComponents:
 
     #major components
     @staticmethod
-    def createPage(pagename,targetDir,pageData):
-        template_data="<html><head><title>"+pagename+"</title></head><body>"+pageData+"</body></html>"
-        file_write=Files.write_file(targetDir+"/"+pagename+".html",pageData)
-        if(file_write!=True):
-            Message.error("While writting to file "+targetDir+"/"+pagename+".html")
-        else:
-            Message.success("Documented "+pagename+" as html")
+    def createPage(pageData,title):
+        pre_html=HtmlComponents.pageTitle(title)
+        post_html=Files.read_file("./Configs/html/postHtml.txt")
+        if(pre_html!=False and post_html!=False):
+            pass
+
+    @staticmethod
+    def pageTitle(title,predata):
+        pre_html=Files.read_file("./Configs/html/preHtml.txt")
+        line_index=0
+        for line in pre_html:
+            if("~" in line):
+                line="<title>"+str(title)+"</title>"
+            else:
+                line_index+=1
+        return pre_html
+
 
     @staticmethod
     def navigation_links(link_title,link_to):

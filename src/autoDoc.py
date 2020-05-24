@@ -89,26 +89,36 @@ class DocumentationType:
         Message.loading("Creating Auto_HtmlDocs")
         DocumentationType.html_state["dumpDir"]=targetDir+"/Auto_HtmlDocs"
         #Files.create_dir(targetDir+"/Auto_HtmlDocs")
+        
         for item in DocumentationType.dirList:
             parsedData=DocumentationType.parseFile(item)
             filename=Files.getfileName(item)
             h=Html(filename,parsedData,DocumentationType.html_state["dumpDir"])
-            h.startDocumentation()
             
+            documented=h.startDocumentation()
+
             DocumentationType.html_state["fileIndex"]+=1
         #print(DocumentationType.html_state["fileIndex"])
     
     @staticmethod
     def markdown(targetDir):
-        from docMarkDown import MarkDown
+        from docMarkDown import MarkDown, MarkDownComponents
         Message.loading("Creating Auto_MarkDownDocs")
         #Files.create_dir(targetDir+"/Auto_MrkDownDocs")
+        documented=""
         for item in DocumentationType.dirList:
             parsedData=DocumentationType.parseFile(item)
             filename=Files.getfileName(item)
             m=MarkDown(filename,parsedData)
-            m.documentFile()
+            
+            documented+=MarkDownComponents.italic(filename)
+            documented+="\n"
+
+            documented+=m.documentFile()
+            
             DocumentationType.mrkdown_state["fileIndex"]+=1
+        Files.write_file("test.md",documented)
+
         print(DocumentationType.mrkdown_state["fileIndex"])
     
     @staticmethod

@@ -33,11 +33,11 @@ class MarkDownComponents:
         while(level>0):
             t+="#"
             level-=1
-        return t+" "+title
+        return t+" "+title+"\n"
 
     @staticmethod
     def paragraph(text):
-        return text+"/n"
+        return text+"\n"
 
     @staticmethod
     def unOrderedList(listData,listTitle):

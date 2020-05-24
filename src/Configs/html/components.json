@@ -1,0 +1,6 @@
+{
+    "components":[
+        {"name":"topnav","preTag":"<nav class='topnav'>","endTag":"</nav>"},
+        {"name":"barner","preTag":"<nav class='sideNav'>","endTag":"</nav>"}
+    ]
+}

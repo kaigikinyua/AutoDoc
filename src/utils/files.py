@@ -7,6 +7,7 @@ from utils.messages import Message
 class Files:
     def __init__(self):
         pass
+    
     @staticmethod
     def listTargetDir(targetDir):
         if(Files.dir_exists(targetDir)):

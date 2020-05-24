@@ -1,5 +1,14 @@
-*{
-    padding:0px;
-    margin:0px;
+/*P:
+    Removing default padding and margin
+*/
+
+.title{
+    font-family: Arial;
+    font-weight: lighter;
+    font-size: 20px;
 }
-/* Hello world css */
+.subtitle{
+    font-family: Arial;
+    font-weight: lighter;
+    font-size: 20px;
+}
