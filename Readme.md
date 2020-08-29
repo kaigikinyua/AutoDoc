@@ -23,7 +23,7 @@ The program only creates a skeleton of the documentation.Document formatting is 
 >python autoDoc.py document 'documentation_type' 'target_directory' 'project_name'
 
 ### *documentation_type*
-Can either be *markdown*, *word* or *html*
+Can either be *markdown* or *word*
 ### *target_directory*
 Directory to the source code *root* folder
 ### *project_name*
